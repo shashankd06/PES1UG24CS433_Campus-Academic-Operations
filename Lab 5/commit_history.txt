@@ -1,0 +1,9 @@
+c920804 Fix Flake8 spacing and add lab deliverables and verification evidence
+Author: Shashank D
+
+a17ec6a Fix Pylint findings and validate permit data and expiry
+Author: Shashank D
+
+55ab650 Fix Bandit findings: secure permit IDs and explicit exceptions
+Author: Shashank D
+

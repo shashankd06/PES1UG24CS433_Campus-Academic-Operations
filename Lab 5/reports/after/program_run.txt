@@ -1,0 +1,2 @@
+Flagged in zone A: ['KA01AB1234', 'KA05XY9999', 'TN09QQ1111']
+Plate to revoke (Enter to skip): Permits on file: 2

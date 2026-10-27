@@ -1,51 +1,88 @@
-# Lab 5: Static Code Analysis — Campus Parking Permit Manager
+# Lab 5: Static Code Analysis
 
-**Your file:** `parking_system.py`
+Shashank D | SRN: PES1UG24CS433
 
-Follow the lab handout for the full instructions.
+## Submission contents
 
-## About the program
+- `parking_system.py`: cleaned program.
+- `issues.md`: 13 documented issues, including findings from all three tools.
+- `reflection.md`: four prepared reflection answers; see missing-question note.
+- `reports/before/` and `reports/after/`: Pylint, Bandit and Flake8 reports.
+- `original/parking_system.py`: unchanged baseline for line references.
+- `test_parking_system.py` and `reports/test_results.txt`: 18 passing tests.
+- `Lab5_Report.pdf`: printable summary, issue table and reflections.
+- `requirements.txt`: exact installed tool versions and dependencies.
+- The ZIP also includes `git_history.bundle` and `commit_history.txt`.
 
-A parking permit manager. It issues permits for vehicles in zones A to C, revokes them, checks for expired permits and flags vehicles that should not be parked in a zone.
+## Verified results
 
-The code works, but only just. It has quality, style and security problems of the kind Pylint, Flake8 and Bandit are built to find.
+| Check | Before | After |
+|---|---:|---:|
+| Pylint | 6.32/10 (21 messages) | 10.00/10 |
+| Bandit | 2 Low findings; 0 Medium/High | 0 findings |
+| Flake8 | 16 violations | 0 violations |
+| Regression tests | Not run on original | 18 passed |
 
-## What to do
+The empty final Flake8 report is expected: a successful run emits no violations.
+Tool checks target `parking_system.py`, matching the lab scope. No rule
+suppression or custom score configuration was used.
 
-1. **Run it first** and read the output carefully:
-   ```bash
-   python parking_system.py
-   ```
-   It asks one question. Press Enter to use the default, then try a few inputs of your own. Not every problem in this file is something a tool will flag, so pay attention to output that looks wrong.
+## Reproduce the checks (Python 3.12)
 
-2. **Install the tools:**
-   ```bash
-   pip install pylint bandit flake8
-   ```
+```text
+python -m venv .venv
+.venv\Scripts\activate
+python -m pip install -r requirements.txt
+python -m pylint --persistent=n parking_system.py
+python -m bandit -r parking_system.py
+python -m flake8 parking_system.py
+python -m unittest -v test_parking_system.py
+python parking_system.py
+```
 
-3. **Run the analysis** and save the reports:
-   ```bash
-   pylint parking_system.py > pylint_report.txt
-   bandit -r parking_system.py > bandit_report.txt
-   flake8 parking_system.py > flake8_report.txt
-   ```
+For baseline checks, run the same three analysis commands inside `original/`.
+Run the demonstration in a fresh directory or retain a backup of your data.
+Reports combine stdout and stderr so diagnostic context is retained.
 
-4. **Document the issues** in `issues.md` using this table (at least 4 rows, high and medium severity first):
+## Three local commits
 
-   | Issue | Type | Line(s) | Description | Fix Approach |
-   |-------|------|---------|-------------|--------------|
-   | ... | ... | ... | ... | ... |
+1. Fix Bandit findings: secure permit IDs and explicit exceptions.
+2. Fix Pylint findings and validate permit data and expiry.
+3. Fix Flake8 spacing and add lab deliverables and verification evidence.
 
-5. **Fix the code.** Fix at least 4 of the issues you documented, then rerun all three tools to confirm they are gone. Repeat until you are satisfied. The program should still do its job when you are done.
+This lab is published in the `Lab 5` folder of
+https://github.com/shashankd06/PES1UG24CS433_Campus-Academic-Operations
+as three corresponding commits. Their hashes differ from the original local
+commits because the files now belong to this repository under `Lab 5/`.
+`commit_history.txt` lists the original commits preserved in `git_history.bundle`.
+The PDF and ZIP are the original prepared submission snapshots from before
+publication; their local-only wording describes that preparation stage.
+The original assignment README is preserved as `SOURCE_README.md`.
 
-6. **Reflect.** Answer the four reflection questions from the handout in `reflection.md`.
+To recover the original standalone history, run from this folder:
 
-## Deliverables
+```text
+git clone git_history.bundle restored_repository
+git -C restored_repository log -3 --oneline
+```
 
-1. `parking_system.py`: your cleaned version, with at least 4 issues fixed.
-2. `issues.md`: the completed issue table.
-3. `reflection.md`: your answers to the reflection questions.
+The bundle includes baseline history plus the three new commits. The ZIP omits
+the live `.git` directory, caches and virtual environment. GitHub commit history records the three folder-scoped publication commits.
 
-**Target:** aim for a Pylint score above 9.5 on your final file. A perfect 10.00/10 is very good.
+## Behavior and scope
 
-Be ready to explain the bugs you found and how you fixed them. You may be called on to present.
+Valid plates are non-empty strings; this lab does not enforce jurisdiction-specific
+plate syntax. Permits remain valid through their expiry date. The demonstration
+now uses valid zones and ISO dates. Invalid input examples are covered by tests.
+Missing database files start empty; malformed or inaccessible files produce a
+visible error and are not silently replaced. The file store remains a simple
+single-process lab implementation, without transactional writes or file locking.
+
+## Provenance and reflection note
+
+Repository: https://github.com/SETAPESU26/L5_10_parking_permits
+Baseline commit: 127891f607978b73040587cbb73c7a3b6bb6151a
+Source handout: Lab_5_Static_Code_Analysis_Student_handout.pdf (3 pages).
+Prepared 27 October 2026 for Shashank D, PES1UG24CS433.
+The source handout omits the reflection questions referenced by the README.
+Four relevant substitute prompts and drafted answers are clearly labeled.

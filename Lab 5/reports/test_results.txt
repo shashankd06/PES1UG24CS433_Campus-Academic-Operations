@@ -1,0 +1,23 @@
+test_bad_database_schema_preserves_memory (test_parking_system.PermitTests.test_bad_database_schema_preserves_memory) ... ok
+test_bad_expiry_fails_closed (test_parking_system.PermitTests.test_bad_expiry_fails_closed) ... ok
+test_corrupt_json_preserves_memory_and_disk (test_parking_system.PermitTests.test_corrupt_json_preserves_memory_and_disk) ... ok
+test_identifiers_differ (test_parking_system.PermitTests.test_identifiers_differ) ... ok
+test_import_has_no_interactive_side_effects (test_parking_system.PermitTests.test_import_has_no_interactive_side_effects) ... ok
+test_invalid_expiry_update_preserves_record (test_parking_system.PermitTests.test_invalid_expiry_update_preserves_record) ... ok
+test_invalid_plates_do_not_mutate_database (test_parking_system.PermitTests.test_invalid_plates_do_not_mutate_database) ... ok
+test_invalid_scan_zone (test_parking_system.PermitTests.test_invalid_scan_zone) ... ok
+test_invalid_zone (test_parking_system.PermitTests.test_invalid_zone) ... ok
+test_known_revocation (test_parking_system.PermitTests.test_known_revocation) ... ok
+test_missing_file (test_parking_system.PermitTests.test_missing_file) ... ok
+test_past_expiry (test_parking_system.PermitTests.test_past_expiry) ... ok
+test_records_are_opt_in (test_parking_system.PermitTests.test_records_are_opt_in) ... ok
+test_registration (test_parking_system.PermitTests.test_registration) ... ok
+test_save_and_load (test_parking_system.PermitTests.test_save_and_load) ... ok
+test_today_remains_valid (test_parking_system.PermitTests.test_today_remains_valid) ... ok
+test_unknown_revocation (test_parking_system.PermitTests.test_unknown_revocation) ... ok
+test_zone_scan (test_parking_system.PermitTests.test_zone_scan) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.282s
+
+OK
